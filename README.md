@@ -5,7 +5,7 @@ Wise Quotes is an application where users can view quotes and their details pres
 ## Installation 
   Clone this repository into your computer using this command:<mark>git clone https://github.com/WaruiAlfred/Quotes.git</mark>
 ## Screenshot
-![ScreenShot](https://raw.github.com/WaruiAlfred/Quotes/master/src/../../../../../../src/assets/screenshot.png)
+![ScreenShot](https://raw.github.com/WaruiAlfred/Quotes/master/src/assets/screenshot.png)
 ## Known Bugs
 There are known bugs.
 ## My contacts
