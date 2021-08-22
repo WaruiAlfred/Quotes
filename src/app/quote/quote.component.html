@@ -1,1 +1,49 @@
-<p>quote works!</p>
+<div class="container-fluid content">
+  <div class="introduction">
+    <h1>Wise Quotes</h1>
+    <p>Here you are given a privilege to:</p>
+    <ul>
+      <li>View some quotes</li>
+      <li>Like/dislike quotes</li>
+      <li>Enter some quotes</li>
+      <li>Delete a quote</li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="50%" *ngFor="let quote of quotes; let i = index">
+          <mat-card appHighlighter *ngIf="highlightHighest(i)===quote.upVotes">
+            <mat-card-content>
+              <p><sup><fa-icon [icon]="faQuoteLeft"></fa-icon></sup>{{quote.quoteDetail}}<sup><fa-icon [icon]="faQuoteRight"></fa-icon></sup></p>
+              <p id={{i}} class="text-end"><i><mark>~{{quote.author|titlecase}}</mark></i></p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button (click)='toggleDetails(i)' class="btn"><b>View Details</b></button>
+              </div>
+              <hr>
+              <div *ngIf="quote.showDetails" class="footer">
+                <app-quote-details [quote]='quote' (uninterested)="deleteQuote($event,i)" (upVote)="likeQuote($event,i)" (downVote)="dislikeQuote($event,i)"></app-quote-details>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <mat-card *ngIf="highlightHighest(i)!==quote.upVotes">
+            <mat-card-content>
+              <p><sup><fa-icon [icon]="faQuoteLeft"></fa-icon></sup>{{quote.quoteDetail}}<sup><fa-icon [icon]="faQuoteRight"></fa-icon></sup></p>
+              <p id={{i}} class="text-end"><i><mark>~{{quote.author|titlecase}}</mark></i></p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button (click)='toggleDetails(i)' class="btn"><b>View Details</b></button>
+              </div>
+              <hr>
+              <div *ngIf="quote.showDetails" class="footer">
+                <app-quote-details [quote]='quote' (uninterested)="deleteQuote($event,i)" (upVote)="likeQuote($event,i)" (downVote)="dislikeQuote($event,i)"></app-quote-details>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <app-quote-form (addQuote)="addNewQuote($event)"></app-quote-form>
+    </div>
+  </div>
+</div>
