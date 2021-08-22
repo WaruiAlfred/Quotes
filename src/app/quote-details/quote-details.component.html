@@ -1,1 +1,8 @@
-<p>quote-details works!</p>
+<div class="">
+  <p>This quote was submitted on {{quote.inputDate|date|uppercase}} by <b>{{quote.submitter}}</b>, {{quote.inputDate |timeCount}} day(s) ago.</p>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn" (click)="like(true)"><fa-icon [icon]="faThumbsUp"></fa-icon> {{quote.upVotes}}</button>
+    <button class="btn" (click)="dislike(true)"><fa-icon [icon]="faThumbsDown"></fa-icon> {{quote.downVotes}}</button>
+    <button (click) = "quoteDelete(true)" class="btn btn-outline-danger"><fa-icon [icon]="faTrash"></fa-icon> Delete Quote</button>
+  </div>
+</div>
