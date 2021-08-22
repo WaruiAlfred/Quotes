@@ -1,1 +1,34 @@
-<p>quote-form works!</p>
+<form class="quote-form" (ngSubmit)='submitQuote();quotly.resetForm({})'  #quotly='ngForm'>
+  <h2>Create a Quote</h2>
+  <div class="form-group">
+    <label for="quote">Quote</label>
+    <textarea id="quote" [(ngModel)] = "newQuote.quoteDetail" name="quote" rows="4" cols="50" class="form-control" required placeholder="your quote" #quote='ngModel'></textarea>
+    <div *ngIf="quote.touched && quote.invalid" class="alert alert-danger">
+      <p>A quote is required!!</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input type="text" id="author" [(ngModel)] = "newQuote.author" class="form-control" name="author" required placeholder="quote author's name" #author='ngModel'>
+    <div *ngIf="author.touched && author.invalid" class="alert alert-danger">
+      <p>Author's name is required!!</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="submitter">Quote Submitter</label>
+    <input type="text" id="submitter" [(ngModel)] = "newQuote.submitter" class="form-control" name="submitter" required placeholder="your name" #submitter='ngModel'>
+    <div *ngIf="submitter.touched && submitter.invalid" class="alert alert-danger">
+      <p>Your name is required!!</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="creation">Creation Date</label>
+    <input type="date" id="creation" [(ngModel)] = "newQuote.inputDate" class="form-control" name="creation" required #creation='ngModel'>
+    <div *ngIf="creation.touched && creation.invalid" class="alert alert-danger">
+      <p>Creation date is required!!</p>
+    </div>
+  </div>
+  <div class="clickable">
+    <button type="submit" class="btn btn-dark" [disabled]="quotly.invalid">Create Quote</button>
+  </div>
+</form>
